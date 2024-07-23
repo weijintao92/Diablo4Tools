@@ -1,0 +1,63 @@
+﻿<Page x:Class="game_tools.Views.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:game_tools.Views"
+      mc:Ignorable="d" 
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="HomePage" 
+     >
+    <Grid Name="MainGrid">
+        <!-- 定义多行多列 -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- 定义两列 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <!-- 左侧DataGrid，占2份 -->
+            <ColumnDefinition Width="3*"/>
+            <!-- 右侧Image，占1份 -->
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="ColorGrid" Grid.Row="0" Grid.Column="0">
+            <!-- 在代码中动态添加行和列 -->
+        </Grid>
+
+        <Viewbox  Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Stretch="Uniform"  >
+            <Image   x:Name="imageControl"    />
+        </Viewbox>
+
+        <DataGrid  Grid.Row="1" Grid.Column="0"  x:Name="MyDataGrid"   SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False" ItemsSource="{Binding Entities}" IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="批次" Binding="{Binding TaskBatch}" Width="auto"/>
+                <DataGridTextColumn Header="名称" Binding="{Binding Name}" Width="auto"/>
+                <DataGridTextColumn Header="背包位置" Binding="{Binding ItemIndex}" Width="auto"/>
+                <DataGridTextColumn Header="部位" Binding="{Binding Place}" Width="auto"/>
+                <DataGridTextColumn Header="强度" Binding="{Binding Strength}" Width="auto"/>
+                <DataGridTextColumn Header="护甲值" Binding="{Binding Armor}" Width="auto"/>
+                <DataGridTextColumn Header="最大生命值" Binding="{Binding MaximumHealth}" Width="auto"/>
+                <DataGridTextColumn Header="暴击率" Binding="{Binding CriticalChance}" Width="auto"/>
+                <DataGridTextColumn Header="暴击伤害" Binding="{Binding CriticalDamage}" Width="auto"/>
+                <DataGridTextColumn Header="特效名称" Binding="{Binding SpecialEffectName}" Width="auto"/>
+                <DataGridTextColumn Header="特效描述" Binding="{Binding SpecialEffectDescription}" Width="auto"/>
+                <DataGridTextColumn Header="资源消耗减免" Binding="{Binding ResourceReduction}" Width="auto"/>
+                <DataGridTextColumn Header="攻击速度" Binding="{Binding AttackSpeed}" Width="auto"/>
+                <DataGridTextColumn Header="全元素抗性" Binding="{Binding AllElementResistance}" Width="auto"/>
+                <DataGridTextColumn Header="智力" Binding="{Binding Intelligence}" Width="auto"/>
+                <DataGridTextColumn Header="幸运一击几率" Binding="{Binding CriticalHitChance}" Width="auto"/>
+                <DataGridTextColumn Header="易伤伤害" Binding="{Binding IncreasedDamageTaken}" Width="auto"/>
+                <DataGridTextColumn Header="压制伤害" Binding="{Binding DamageSuppression}" Width="auto"/>
+                <DataGridTextColumn Header="持续性伤害" Binding="{Binding DamageOverTime}" Width="auto"/>
+                <DataGridTextColumn Header="冷却时间缩减" Binding="{Binding CDR}" Width="auto"/>
+                <DataGridTextColumn Header="移动速度" Binding="{Binding MovementSpeed}" Width="auto"/>
+                <DataGridTextColumn Header="创建时间" Binding="{Binding CreatedAt, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" Width="auto" />
+                <DataGridTextColumn Header="威能" Binding="{Binding AmazingPower}" Width="auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,72 @@
+﻿<Window x:Class="game_tools.Views.ScreenshotWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:game_tools"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        Topmost="True"
+        >
+        <!-- 半透明白色背景，可以阻止鼠标事件穿透 -->
+        <Canvas IsHitTestVisible="True" x:Name="canvas" Background="#01FFFFFF"    >
+            <Rectangle Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}"
+               Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"
+               Stroke="Green" StrokeThickness="6" />
+            <!-- Rectangle -->
+            <Rectangle x:Name="selectionRectangle" Stroke="Red" StrokeThickness="2" Fill="Transparent"  Visibility="Collapsed" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave"  MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"
+                       MouseMove="Rectangle_MouseMove"
+                       MouseLeftButtonUp="Rectangle_MouseLeftButtonUp"  />
+            <!-- 四个角小点 -->
+            <Ellipse x:Name="topLeftDot" Width="10" Height="10" Fill="Red" Cursor="SizeNWSE"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp" Visibility="Hidden"/>
+            <Ellipse x:Name="topRightDot" Width="10" Height="10" Fill="Red" Cursor="SizeNESW"
+                     Visibility="Hidden"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp"/>
+            <Ellipse x:Name="bottomLeftDot" Width="10" Height="10" Fill="Red" Cursor="SizeNESW"
+                     Visibility="Hidden"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp"/>
+            <Ellipse x:Name="bottomRightDot" Width="10" Height="10" Fill="Red" Cursor="SizeNWSE"
+                     Visibility="Hidden"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp"/>
+            <!-- 四边中心点小点 -->
+            <Ellipse x:Name="topDot" Width="10" Height="10" Fill="Red" Cursor="SizeNS"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp" Visibility="Hidden"/>
+            <Ellipse x:Name="rightDot" Width="10" Height="10" Fill="Red" Cursor="SizeWE"
+                     Visibility="Hidden"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp"/>
+            <Ellipse x:Name="leftDot" Width="10" Height="10" Fill="Red" Cursor="SizeWE"
+                     Visibility="Hidden"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp"/>
+            <Ellipse x:Name="bottomDot" Width="10" Height="10" Fill="Red" Cursor="SizeNS"
+                     Visibility="Hidden"
+                     MouseLeftButtonDown="Dot_MouseLeftButtonDown"
+                     MouseMove="Dot_MouseMove"
+                     MouseLeftButtonUp="Dot_MouseLeftButtonUp"/>
+
+            <Grid x:Name="grid" Visibility="Collapsed">
+                <StackPanel x:Name="stackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button x:Name="btnClose" Content="关闭" Width="100" Height="30" Click="btnClose_Click"/>
+                    <Button x:Name="btnAssess" Content="评估" Width="100" Height="30" Click="btnAssess_Click" />
+                </StackPanel>
+            </Grid>
+        </Canvas>
+</Window>
