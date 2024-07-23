@@ -1,28 +1,34 @@
+# 简介
+
+我希望实现一些关于暗黑破坏神 4 的工具。
+当前我已经实现了中文版本，基于 ocr 的背包装备词条识别。
+当前，正在进行词条筛选配置的功能开发。如果，你有好的需求可以在 issuse 向我提及。
+
 # 将 SQLite 数据库提供程序与 EF Core 结合使用
 
 1. 安装 Entity Framework Core 工具
    首先，确保你已安装了 Entity Framework Core 工具。你可以通过 dotnet CLI 安装这些工具。
 
-dotnet tool install --global dotnet-ef
+   dotnet tool install --global dotnet-ef
 
 2. 安装 Entity Framework Core 设计包
    确保你的项目中安装了 Entity Framework Core 设计包。这可以通过 NuGet 包管理器或者 Package Manager Console 完成。
 
-在 Package Manager Console 中运行以下命令：
+   在 Package Manager Console 中运行以下命令：
 
-Install-Package Microsoft.EntityFrameworkCore.Design
+   Install-Package Microsoft.EntityFrameworkCore.Design
 
 3. 运行迁移命令
    在你的项目文件夹中打开命令行，然后运行以下命令来添加迁移：
 
-dotnet ef migrations add InitialCreate
-EF Core 将在项目目录中创建“Migrations”文件夹，该文件夹包含两个文件，其中包含表示数据库迁移的代码。
+   ```
+   dotnet ef migrations add InitialCreate
+   EF Core 将在项目目录中创建“Migrations”文件夹，该文件夹包含两个文件，其中包含表示数据库迁移的代码。
 
-```
-dotnet ef database update
-```
+   dotnet ef database update
+   ```
 
-你应在项目目录中看到新创建的 Pizzas.db 文件。
+   你应在项目目录中看到新创建的 Pizzas.db 文件。
 
 # 使用工具
 
@@ -75,8 +81,10 @@ PRAGMA cipher_default_kdf_algorithm = PBKDF2_HMAC_SHA512;
         }
 ```
 
+```xml
     <ItemGroup>
     	<None Update="evaluate.db">
     		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
     	</None>
     </ItemGroup>
+```
